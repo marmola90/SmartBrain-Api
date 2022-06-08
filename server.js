@@ -7,14 +7,17 @@ const signin = require('./controllers/signin.js');
 const profile = require('./controllers/profile.js');
 const image = require('./controllers/image.js');
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED=0
 const db =knex({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
-      port : 5432,
-      user : 'postgres',
-      password : '1234',
-      database : 'smart-brain'
+      // host : '127.0.0.1',
+      // port : 5432,
+      // user : 'postgres',
+      // password : '1234',
+      // database : 'smart-brain'
+      connectionString: process.env.DATABASE_URL,
+      ssl:true
     }
   });
 
